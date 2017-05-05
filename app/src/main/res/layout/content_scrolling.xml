@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             app:met_floatingLabel="highlight"
-            app:met_iconLeft="@drawable/ic_person"
             app:met_iconPadding="0dp"
             app:met_clearButton="true"
             android:hint="@string/first_name"
@@ -37,20 +36,88 @@
             android:layout_below="@+id/etRegFirstName"
             android:maxLines="1"
             app:met_floatingLabel="highlight"
-            app:met_iconLeft="@drawable/ic_person"
             app:met_iconPadding="0dp"
             app:met_clearButton="true"
             android:hint="@string/last_name"
             android:inputType="textCapWords"
             android:id="@+id/etRegLastName" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/etRegLastName"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/regLinGender"
+            android:weightSum="2" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRegGender"
+                android:text="@string/gender"
+                android:textSize="18sp"
+                android:textColor="@android:color/darker_gray"
+                android:paddingTop="10dp"
+                android:paddingBottom="3dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMale"
+                android:text="@string/male"
+                android:textSize="18sp"
+                android:layout_marginStart="20dp"
+                android:textColor="@android:color/black"
+                android:paddingTop="10dp"
+                android:paddingBottom="3dp" />
+
+            <com.sackcentury.shinebuttonlib.ShineButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:src="@android:color/darker_gray"
+                android:id="@+id/opMale"
+                app:btn_color="@android:color/darker_gray"
+                app:btn_fill_color="@color/colorAccent"
+                app:allow_random_color="false"
+                app:siShape="@raw/heart"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvFemale"
+                android:text="@string/female"
+                android:textSize="18sp"
+                android:layout_marginStart="20dp"
+                android:textColor="@android:color/black"
+                android:paddingTop="10dp"
+                android:paddingBottom="3dp" />
+
+            <com.sackcentury.shinebuttonlib.ShineButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:src="@android:color/darker_gray"
+                android:id="@+id/opFemale"
+                app:btn_color="@android:color/darker_gray"
+                app:btn_fill_color="@color/colorAccent"
+                app:allow_random_color="false"
+                app:siShape="@raw/heart"/>
+
+
+
+        </LinearLayout>
+
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etRegLastName"
+            android:layout_below="@+id/regLinGender"
             android:maxLines="1"
             app:met_floatingLabel="highlight"
-            app:met_iconLeft="@drawable/ic_person"
             app:met_iconPadding="0dp"
             app:met_clearButton="true"
             android:hint="@string/email_id"
@@ -63,12 +130,119 @@
             android:layout_below="@+id/etRegEmail"
             android:maxLines="1"
             app:met_floatingLabel="highlight"
-            app:met_iconLeft="@drawable/ic_person"
             app:met_iconPadding="0dp"
             app:met_clearButton="true"
-            android:hint="@string/email_id"
-            android:inputType="textEmailAddress"
+            android:hint="@string/phone"
+            android:inputType="phone"
             android:id="@+id/etRegPhone" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etRegPhone"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:hint="@string/date_of_birth"
+            android:focusable="false"
+            android:inputType="date"
+            android:id="@+id/etRegDob" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/etRegDob"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/regLinLayCityState"
+            android:weightSum="2" >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:maxLines="1"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+                app:met_clearButton="true"
+                android:hint="@string/city"
+                android:layout_weight="1"
+                android:inputType="textCapWords"
+                android:id="@+id/etRegCity"
+                android:ellipsize="end" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:layout_marginLeft="2dp"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+                app:met_clearButton="true"
+                android:layout_weight="1"
+                android:hint="@string/state"
+                android:inputType="textCapWords"
+                android:id="@+id/etRegState"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/regLinLayCityState"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/regLinLayCountryZip"
+            android:weightSum="2" >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:maxLines="1"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+                app:met_clearButton="true"
+                android:hint="@string/country"
+                android:layout_weight="1"
+                android:inputType="textCapWords"
+                android:id="@+id/etRegCountry"
+                android:ellipsize="end" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:layout_marginLeft="2dp"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+                app:met_clearButton="true"
+                android:layout_weight="1"
+                android:hint="@string/zipcode"
+                android:inputType="number"
+                android:id="@+id/etRegZip"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+        <com.dd.processbutton.iml.ActionProcessButton
+            android:id="@+id/btnRegister"
+            android:layout_below="@id/regLinLayCountryZip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/register"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:pb_colorComplete="@color/green_complete"
+            app:pb_colorNormal="@color/colorAccent"
+            app:pb_colorPressed="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            app:pb_colorProgress="@color/purple_progress"
+            app:pb_textComplete="Success"
+            app:pb_textProgress="Loading"
+            app:pb_textError="Error"
+            app:pb_colorError="@color/red_error" />
+
 
     </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>

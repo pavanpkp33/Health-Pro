@@ -27,6 +27,8 @@ dependencies {
     compile('com.github.orangegangsters:lollipin:2.0.0@aar') {
         transitive = true
     }
+    compile 'com.sackcentury:shinebutton:0.1.7'
+    compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.0'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.android.support:appcompat-v7:25.3.0'
