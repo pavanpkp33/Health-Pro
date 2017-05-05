@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="prohealth.cs646.edu.sdsu.cs.prohealth.activities.SignUp"
+    tools:showIn="@layout/activity_scrolling"
+    android:background="@android:color/background_light">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/regFormParent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_iconLeft="@drawable/ic_person"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:hint="@string/first_name"
+            android:id="@+id/etRegFirstName"
+            android:inputType="textCapWords" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etRegFirstName"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_iconLeft="@drawable/ic_person"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:hint="@string/last_name"
+            android:inputType="textCapWords"
+            android:id="@+id/etRegLastName" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etRegLastName"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_iconLeft="@drawable/ic_person"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:hint="@string/email_id"
+            android:inputType="textEmailAddress"
+            android:id="@+id/etRegEmail" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etRegEmail"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_iconLeft="@drawable/ic_person"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:hint="@string/email_id"
+            android:inputType="textEmailAddress"
+            android:id="@+id/etRegPhone" />
+
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
