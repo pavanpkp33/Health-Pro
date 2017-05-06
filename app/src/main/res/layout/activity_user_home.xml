@@ -6,97 +6,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray">
-<android.support.v7.widget.Toolbar
-    android:layout_height="150dp"
-    android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
-    android:elevation="10dp"
-    android:theme="@style/ToolBarStyle"
 
 
-    android:id="@+id/tbUserHome">
+    <android.support.v7.widget.Toolbar
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:elevation="10dp"
+        android:id="@+id/tbUserHome"
+        android:theme="@style/ToolBarStyle">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layToolBar"
+            android:gravity="center_horizontal">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/layHeader"
+                android:weightSum="2"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:id="@+id/tvUserHomeName"
+                    android:layout_alignBottom="@+id/tvUserHi"
+                    android:layout_toEndOf="@+id/tvUserHi"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="26sp"
+                    android:ellipsize="marquee" />
+
+                <TextView
+                    android:text="@string/hi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvUserHi"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="26sp"
+                    android:layout_marginTop="39dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/layHeader"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/layInfo"
+                android:weightSum="2"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvUserHomeGender"
+                    android:drawableLeft="@drawable/ic_gender"
+                    android:drawablePadding="2dp"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/background_light"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="3dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvUserHomeDob"
+                    android:drawableLeft="@drawable/ic_cake"
+                    android:drawablePadding="2dp"
+                    android:textSize="16sp"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@android:color/background_light"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="3dp" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/layToolBar"
-        android:gravity="center_horizontal">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/layHeader"
-            android:weightSum="2"
-            android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:id="@+id/tvUserHomeName"
-            android:layout_alignBottom="@+id/tvUserHi"
-            android:layout_toEndOf="@+id/tvUserHi"
-            android:textColor="@android:color/background_light"
-            android:textSize="26sp"
-            android:ellipsize="marquee" />
-
-        <TextView
-            android:text="@string/hi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvUserHi"
-            android:textColor="@android:color/background_light"
-            android:textSize="26sp"
-            android:layout_marginTop="39dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
-    </RelativeLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_below="@+id/layHeader"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/layInfo"
-            android:weightSum="2"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvUserHomeGender"
-                android:drawableLeft="@drawable/ic_gender"
-                android:text="@string/male"
-                android:drawablePadding="2dp"
-                android:textSize="16sp"
-                android:textColor="@android:color/background_light"
-                android:paddingTop="10dp"
-                android:paddingBottom="3dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvUserHomeDob"
-                android:drawableLeft="@drawable/ic_cake"
-                android:drawablePadding="2dp"
-                android:textSize="16sp"
-                android:layout_marginStart="20dp"
-                android:textColor="@android:color/background_light"
-                android:paddingTop="10dp"
-                android:paddingBottom="3dp" />
-
-
-        </LinearLayout>
-
-    </RelativeLayout>
-</android.support.v7.widget.Toolbar>
-
-    <android.support.v4.widget.NestedScrollView
+        android:layout_below="@+id/tbUserHome"
+        android:id="@+id/relNested"
+        android:layout_marginBottom="20dp">
+     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/userHomeNestedView"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tbUserHome"
+
         >
         <LinearLayout
             android:id="@+id/bmiRelLayout"
@@ -121,20 +127,54 @@
                 android:clickable="true"
                 android:layout_height="120dp"
                 app:cardBackgroundColor="@android:color/white">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
 
-                <TextView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:drawableLeft="@drawable/ic_bmi"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="16dp"
-                    android:id="@+id/tvBmiIcon" />
-            </RelativeLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_height="match_parent"
+                        android:layout_width="5dp"
+                        android:id="@+id/BMIDesign"
+                        android:background="@color/colorAccent"></LinearLayout>
+
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:drawableLeft="@drawable/ic_bmi"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="16dp"
+                        android:id="@+id/tvBmiIcon" />
+
+                    <TextView
+                        android:text="@string/body_mass_index_bmi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/tvBmiIcon"
+                        android:layout_toEndOf="@+id/BMIDesign"
+                        android:layout_marginStart="14dp"
+                        android:id="@+id/tvHeading" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvBMIValue"
+                        android:textSize="30sp"
+                        android:textColor="@android:color/background_dark"
+                        android:layout_centerVertical="true"
+                        android:layout_alignStart="@+id/tvHeading" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvBmiIcon"
+                        android:layout_alignStart="@+id/tvBMIValue"
+                        android:drawableLeft="@drawable/av_timer"
+                        android:drawablePadding="2dp"
+                        android:id="@+id/tvBMILastUpdated" />
+                </RelativeLayout>
 
             </android.support.v7.widget.CardView>
 
@@ -152,6 +192,13 @@
                     android:layout_height="match_parent">
 
 
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/GLDesign"
+                        android:background="@color/colorSecAccent"></LinearLayout>
+
                     <TextView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
@@ -160,6 +207,44 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="16dp"
                         android:id="@+id/tvGlucoseIcon" />
+
+                    <TextView
+                        android:text="@string/blood_glucose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:id="@+id/tvBloodGlucoseHeader"
+                        android:layout_above="@+id/tvGlucoseIcon"
+                        android:layout_toEndOf="@+id/GLDesign" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignStart="@+id/tvBloodGlucoseHeader"
+                        android:id="@+id/tvBloodGlucoseVal"
+                        android:textSize="30sp"
+                        android:textColor="@android:color/background_dark" />
+
+                    <TextView
+                        android:text="@string/mmol_l"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvMMOL"
+                        android:layout_alignBaseline="@+id/tvBloodGlucoseVal"
+                        android:layout_alignBottom="@+id/tvBloodGlucoseVal"
+                        android:layout_toEndOf="@+id/tvBloodGlucoseVal"
+                        android:layout_marginStart="13dp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/av_timer"
+                        android:drawablePadding="2dp"
+                        android:layout_below="@+id/tvGlucoseIcon"
+                        android:layout_alignStart="@+id/tvBloodGlucoseVal"
+                        android:id="@+id/tvBGLastUpdated" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -179,6 +264,13 @@
                     android:layout_height="match_parent">
 
 
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/BPDesign"
+                        android:background="@color/colorPrimaryDark"></LinearLayout>
+
                     <TextView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
@@ -187,11 +279,51 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="16dp"
                         android:id="@+id/tvBPIcon" />
+
+                    <TextView
+                        android:text="@string/blood_pressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:id="@+id/tvBPHeader"
+                        android:layout_above="@+id/tvBPIcon"
+                        android:layout_toEndOf="@+id/BPDesign" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvBPValue"
+                        android:layout_centerVertical="true"
+                        android:layout_alignStart="@+id/tvBPHeader"
+                        android:textSize="30sp"
+                        android:textColor="@android:color/background_dark" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/tvBPValue"
+                        android:id="@+id/tvBPLastUpdated"
+                        android:drawableLeft="@drawable/av_timer"
+                        android:drawablePadding="2dp"
+                        android:layout_below="@+id/tvBPIcon" />
+
+
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-
-
+        <com.nightonke.boommenu.BoomMenuButton
+            android:id="@+id/bmb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bmb_normalColor="@color/colorPrimaryDark"
+            app:bmb_buttonEnum="textOutsideCircle"
+            app:bmb_piecePlaceEnum="piecePlace_dot_6_1"
+            app:bmb_buttonPlaceEnum="buttonPlace_sc_6_3"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap" />
+    </RelativeLayout>
 </RelativeLayout>

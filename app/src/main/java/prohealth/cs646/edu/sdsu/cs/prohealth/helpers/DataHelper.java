@@ -12,6 +12,9 @@ public class DataHelper {
 
     private static final String DATABASE_NAME = "healthpro";
     private static final String DATABASE_TABLE = "users";
+    private static final String DATABASE_TABLE_BMI = "bmi";
+    private static final String DATABASE_TABLE_BLOODG = "bgc";
+    private static final String DATABASE_TABLE_BP = "bp";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -55,6 +58,13 @@ public class DataHelper {
 
             db.execSQL("CREATE TABLE " + DATABASE_TABLE + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRSTNAME TEXT, LASTNAME TEXT, DOB TEXT, GENDER TEXT, "
                     + " EMAIL TEXT UNIQUE, PHONE TEXT DEFAULT 'N/A', CITY TEXT DEFAULT 'N/A' , STATE TEXT DEFAULT 'N/A', COUNTRY TEXT DEFAULT 'N/A', ZIPCODE TEXT 'N/A' );");
+
+            db.execSQL("CREATE TABLE " + DATABASE_TABLE_BMI + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT, UID INTEGER , HEIGHT REAL, WEIGHT REAL, BMI REAL, NOTES TEXT DEFAULT 'N/A', LAST_MODIFIED TEXT );");
+
+            db.execSQL("CREATE TABLE " + DATABASE_TABLE_BLOODG + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT, UID INTEGER , BLDG REAL, NOTES TEXT DEFAULT 'N/A', LAST_MODIFIED TEXT );");
+
+            db.execSQL("CREATE TABLE " + DATABASE_TABLE_BP + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT, UID INTEGER , SYSTOLIC REAL, DIASTOLIC REAL, HEART_BEAT REAL, NOTES TEXT DEFAULT 'N/A', LAST_MODIFIED TEXT );");
+
 
         }
 
