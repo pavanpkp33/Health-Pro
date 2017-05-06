@@ -3,11 +3,11 @@
     package="prohealth.cs646.edu.sdsu.cs.prohealth">
 
     <application
+        android:name=".activities.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".activities.App"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.MainActivity" />
         <activity
@@ -25,6 +25,8 @@
         <activity
             android:name=".activities.SignUp"
             android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.UserHome"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

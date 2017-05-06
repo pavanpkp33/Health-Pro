@@ -22,4 +22,6 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="register">Register</string>
+    <string name="hi">Hi,</string>
+    <string name="your_vitals">YOUR VITALS</string>
 </resources>

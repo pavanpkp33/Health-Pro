@@ -1,8 +1,11 @@
 package prohealth.cs646.edu.sdsu.cs.prohealth.activities;
 
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +23,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import prohealth.cs646.edu.sdsu.cs.prohealth.R;
+import prohealth.cs646.edu.sdsu.cs.prohealth.helpers.DataHelper;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener, ShineButton.OnCheckedChangeListener{
@@ -28,7 +32,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
     MaterialEditText etFirstName, etLastName, etPhone, etEmail, etDob, etCity, etState, etCountry, etZip;
     ActionProcessButton btnRegister;
     Calendar calObj = Calendar.getInstance();
-    String genderValue;
+    String genderValue = "";
+    ContentValues userInfo;
+    DataHelper dbHelper;
+
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -41,6 +48,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        dbHelper = new DataHelper(this);
 
         initUI();
 
@@ -71,6 +79,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
 
         etDob.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
+        btnRegister.setMode(ActionProcessButton.Mode.ENDLESS);
         btnFemale.setOnCheckStateChangeListener(this);
         btnMale.setOnCheckStateChangeListener(this);
     }
@@ -88,11 +97,84 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
 
             case R.id.btnRegister:
 
+                validateData();
 
                 break;
 
 
         }
+    }
+
+    private void validateData() {
+        btnRegister.setEnabled(false);
+        btnRegister.setProgress(2);
+        userInfo = new ContentValues();
+        String city = "N/A", country = "N/A", state = "N/A", zipcode = "N/A";
+        String firstName = etFirstName.getText().toString();
+        String lastName = etLastName.getText().toString();
+        String email = etEmail.getText().toString();
+        String phone = etPhone.getText().toString();
+        city = etCity.getText().toString();
+        country = etCountry.getText().toString();
+        state = etState.getText().toString();
+        zipcode = etZip.getText().toString();
+        String dob = etDob.getText().toString();
+        if(firstName.isEmpty()){
+            etFirstName.setError("Enter First name");
+            etFirstName.requestFocus();
+
+        }else if(lastName.isEmpty()){
+            etLastName.setError("Enter Last name");
+            etLastName.requestFocus();
+        }else if(email.isEmpty()){
+            etEmail.setError("Enter valid Email ID");
+            etEmail.requestFocus();
+        }else if(dob.isEmpty()){
+            etDob.setError("Choose Date of Birth");
+        }else if(genderValue.isEmpty()){
+            Snackbar.make(this.findViewById(android.R.id.content), "Select a Gender", Snackbar.LENGTH_SHORT).show();
+        }else{
+            userInfo.put("FIRSTNAME", firstName);
+            userInfo.put("LASTNAME", lastName);
+            userInfo.put("DOB", dob);
+            userInfo.put("EMAIL", email);
+            userInfo.put("GENDER", genderValue);
+            userInfo.put("PHONE", phone);
+            userInfo.put("CITY", city);
+            userInfo.put("STATE", state);
+            userInfo.put("COUNTRY", country);
+            userInfo.put("ZIPCODE", zipcode);
+            dbHelper.insert(userInfo);
+        }
+        disableForms();
+        Handler handlerTimer = new Handler();
+        handlerTimer.postDelayed(new Runnable(){
+            public void run() {
+                btnRegister.setProgress(100);
+                displayHomeScreen();
+
+            }}, 2000);
+
+    }
+
+    private void displayHomeScreen() {
+
+        Intent homeIntent = new Intent(this, UserHome.class);
+        startActivity(homeIntent);
+        finish();
+    }
+
+    private void disableForms() {
+
+        etFirstName.setEnabled(false);
+        etLastName.setEnabled(false);
+        etDob.setEnabled(false);
+        etEmail.setEnabled(false);
+        etCity.setEnabled(false);
+        etCountry.setEnabled(false);
+        etState.setEnabled(false);
+        etPhone.setEnabled(false);
+        etZip.setEnabled(false);
     }
 
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -127,6 +209,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
                 if(checked){
                     btnFemale.setChecked(false);
                     genderValue = "Male";
+                }else{
+                    genderValue = "";
                 }
 
                 break;
@@ -136,6 +220,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
                 if(checked){
                     btnMale.setChecked(false);
                     genderValue = "Female";
+                }else{
+                    genderValue = "";
                 }
 
                 break;
