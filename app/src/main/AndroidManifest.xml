@@ -26,7 +26,23 @@
             android:name=".activities.SignUp"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.UserHome"
+        <activity
+            android:name=".activities.UserHome"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.BMI"
+            android:label="@string/title_activity_bmi"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.VitalDetails"
+            android:label="Add Record" />
+        <activity
+            android:name=".activities.BGC"
+            android:label="@string/title_activity_bgc"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.BP"
+            android:label="@string/title_activity_bp"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

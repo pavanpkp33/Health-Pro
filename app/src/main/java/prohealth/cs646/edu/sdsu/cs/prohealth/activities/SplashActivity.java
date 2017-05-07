@@ -17,9 +17,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Cursor c = dbHelper.select(Constants.RECORD_COUNT, null);
         c.moveToFirst();
-        int count = c.getInt(0);
+        int count = c.getCount();
         if(count > 0){
             Intent intent = new Intent(this,UserHome.class);
+            intent.putExtra("id", c.getInt(0));
             startActivity(intent);
             finish();
         }else{

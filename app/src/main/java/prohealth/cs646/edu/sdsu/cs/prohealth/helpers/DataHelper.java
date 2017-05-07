@@ -37,8 +37,8 @@ public class DataHelper {
         manageDB.close();
     }
 
-    public long insert(ContentValues cvItems){
-       return db.insertWithOnConflict(DATABASE_TABLE, null, cvItems, SQLiteDatabase.CONFLICT_IGNORE );
+    public long insert(ContentValues cvItems, String tableName){
+       return db.insertWithOnConflict(tableName, null, cvItems, SQLiteDatabase.CONFLICT_IGNORE );
     }
 
     public Cursor select(String Query, String [] params){

@@ -35,7 +35,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
     String genderValue = "";
     ContentValues userInfo;
     DataHelper dbHelper;
-
+    long uid;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -106,8 +106,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
     }
 
     private void validateData() {
-        btnRegister.setEnabled(false);
-        btnRegister.setProgress(2);
+
         userInfo = new ContentValues();
         String city = "N/A", country = "N/A", state = "N/A", zipcode = "N/A";
         String firstName = etFirstName.getText().toString();
@@ -122,18 +121,24 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
         if(firstName.isEmpty()){
             etFirstName.setError("Enter First name");
             etFirstName.requestFocus();
+            return;
 
         }else if(lastName.isEmpty()){
             etLastName.setError("Enter Last name");
             etLastName.requestFocus();
+            return;
         }else if(email.isEmpty()){
             etEmail.setError("Enter valid Email ID");
             etEmail.requestFocus();
+            return;
         }else if(dob.isEmpty()){
-            etDob.setError("Choose Date of Birth");
+            etDob.setError("Choose Date of Birth"); return;
         }else if(genderValue.isEmpty()){
             Snackbar.make(this.findViewById(android.R.id.content), "Select a Gender", Snackbar.LENGTH_SHORT).show();
+            return;
         }else{
+            btnRegister.setEnabled(false);
+            btnRegister.setProgress(2);
             userInfo.put("FIRSTNAME", firstName);
             userInfo.put("LASTNAME", lastName);
             userInfo.put("DOB", dob);
@@ -144,22 +149,31 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, S
             userInfo.put("STATE", state);
             userInfo.put("COUNTRY", country);
             userInfo.put("ZIPCODE", zipcode);
-            dbHelper.insert(userInfo);
+            uid = dbHelper.insert(userInfo, "users");
+
         }
         disableForms();
         Handler handlerTimer = new Handler();
         handlerTimer.postDelayed(new Runnable(){
             public void run() {
-                btnRegister.setProgress(100);
-                displayHomeScreen();
+                if(uid > 0){
+                    btnRegister.setProgress(100);
+                    displayHomeScreen(uid);
+
+                }else{
+                    btnRegister.setProgress(-1);
+                }
+
 
             }}, 2000);
 
     }
 
-    private void displayHomeScreen() {
+    private void displayHomeScreen(long uid) {
 
         Intent homeIntent = new Intent(this, UserHome.class);
+        int id = (int) uid;
+        homeIntent.putExtra("id", id);
         startActivity(homeIntent);
         finish();
     }

@@ -28,4 +28,17 @@
     <string name="blood_glucose">Blood Glucose</string>
     <string name="mmol_l">mmol/L</string>
     <string name="blood_pressure">Blood Pressure</string>
+    <string name="title_activity_bmi">BMI</string>
+    <string name="bpm">bpm</string>
+    <string name="height">Height</string>
+    <string name="in_ft_in">in meters</string>
+    <string name="weight">Weight</string>
+    <string name="in_pounds">in pounds</string>
+    <string name="save">Save</string>
+    <string name="notes">Notes</string>
+    <string name="systolic">Systolic</string>
+    <string name="diastolic">Diastolic</string>
+    <string name="heart_beat">Heart Beat</string>
+    <string name="title_activity_bgc">BGC</string>
+    <string name="title_activity_bp">BP</string>
 </resources>

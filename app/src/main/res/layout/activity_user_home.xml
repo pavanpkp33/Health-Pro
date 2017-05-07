@@ -309,6 +309,15 @@
                         android:drawablePadding="2dp"
                         android:layout_below="@+id/tvBPIcon" />
 
+                    <TextView
+                        android:text="@string/bpm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvBpm"
+                        android:layout_alignBaseline="@+id/tvBPValue"
+                        android:layout_alignBottom="@+id/tvBPValue"
+                        android:layout_toEndOf="@+id/tvBPValue" />
+
 
                 </RelativeLayout>
 
