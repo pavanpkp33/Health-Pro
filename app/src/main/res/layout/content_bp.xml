@@ -13,4 +13,9 @@
     tools:context="prohealth.cs646.edu.sdsu.cs.prohealth.activities.BP"
     tools:showIn="@layout/activity_bp">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/bpListView" />
 </RelativeLayout>

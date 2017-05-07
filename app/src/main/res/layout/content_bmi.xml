@@ -13,4 +13,8 @@
     tools:context="prohealth.cs646.edu.sdsu.cs.prohealth.activities.BMI"
     tools:showIn="@layout/activity_bmi">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/bmiListView" />
 </RelativeLayout>
