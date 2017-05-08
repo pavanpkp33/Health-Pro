@@ -41,4 +41,11 @@
     <string name="heart_beat">Heart Beat</string>
     <string name="title_activity_bgc">BGC</string>
     <string name="title_activity_bp">BP</string>
+    <string name="title_activity_vital_record_details">VitalRecordDetails</string>
+    <string name="height_meters">Height (meters)</string>
+    <string name="weight_lbs">Weight (lbs)</string>
+    <string name="added_on">Added on</string>
+    <string name="bmi">BMI</string>
+    <string name="delete_record">Delete Record</string>
+    <string name="glucose_level_mmol_l">Glucose level (mmol/L)</string>
 </resources>

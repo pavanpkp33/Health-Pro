@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +64,7 @@ public class BGC extends AppCompatActivity implements AdapterView.OnItemClickLis
                 Intent intent = new Intent(BGC.this, VitalDetails.class);
                 intent.putExtra("id", id);
                 intent.putExtra("tag", "BGC");
+                intent.putExtra("action", "add");
                 startActivityForResult(intent, 2);
             }
         });
@@ -95,6 +97,12 @@ public class BGC extends AppCompatActivity implements AdapterView.OnItemClickLis
         if(requestCode == 2){
             id = data.getIntExtra("id",0);
             getListData();
+        }else{
+            if(resultCode == RESULT_CANCELED){
+                Toast.makeText(this, "Record has been deleted", Toast.LENGTH_SHORT).show();
+            }
+            id = data.getIntExtra("id", 0);
+            getListData();
         }
     }
     @Override
@@ -102,11 +110,19 @@ public class BGC extends AppCompatActivity implements AdapterView.OnItemClickLis
         Intent intent = new Intent();
         intent.putExtra("id", id);
         setResult(RESULT_OK, intent);
+
         super.onBackPressed();
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Intent detailsIntent = new Intent(this, VitalRecordDetails.class);
+        detailsIntent.putExtra("record", vitalList.get(position));
+        detailsIntent.putExtra("tag", "BGC");
+        detailsIntent.putExtra("header", "Blood Glucose details");
+        startActivityForResult(detailsIntent, 11);
+
 
     }
 
@@ -134,4 +150,6 @@ public class BGC extends AppCompatActivity implements AdapterView.OnItemClickLis
         vAdapter.notifyDataSetChanged();
 
     }
+
+
 }

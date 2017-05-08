@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.dd.processbutton.iml.ActionProcessButton;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -22,16 +23,17 @@ import java.util.Date;
 
 import prohealth.cs646.edu.sdsu.cs.prohealth.R;
 import prohealth.cs646.edu.sdsu.cs.prohealth.helpers.DataHelper;
+import prohealth.cs646.edu.sdsu.cs.prohealth.model.VitalInformation;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class VitalDetails extends AppCompatActivity implements View.OnClickListener {
-    String tag = "";
+    String tag = "", action = "";
     MaterialEditText etBMIHeight, etBMIWeight, etBPSystolic, etBPDiastolic, etBPBpm, etBG;
     EditText etBMInotes, etBPNotes, etBGNotes;
     ActionProcessButton btnBMISave, btnBPSave, btnBGSave;
     ContentValues dataBundle;
     DataHelper dbHelper;
-
+    VitalInformation vitalInfo;
     int id = 0, resCode;
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -45,6 +47,7 @@ public class VitalDetails extends AppCompatActivity implements View.OnClickListe
         if(bdl != null){
             id = bdl.getInt("id");
            tag =  bdl.getString("tag");
+
         }
 
         if(!tag.isEmpty()){
@@ -78,6 +81,7 @@ public class VitalDetails extends AppCompatActivity implements View.OnClickListe
         etBG = (MaterialEditText) findViewById(R.id.etBgcGlucose);
         etBGNotes = (EditText) findViewById(R.id.etBGNotes);
         btnBGSave = (ActionProcessButton) findViewById(R.id.btnBGSave);
+
 
         btnBGSave.setOnClickListener(this);
     }
@@ -131,32 +135,32 @@ public class VitalDetails extends AppCompatActivity implements View.OnClickListe
 
     private void storeBGData(String bgData, String notes) {
 
-        dataBundle = new ContentValues();
-        String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date());
+            dataBundle = new ContentValues();
+            String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date());
 
-        dataBundle.put("UID", id);
-        dataBundle.put("BLDG", Double.parseDouble(bgData));
-        dataBundle.put("NOTES", notes);
-        dataBundle.put("LAST_MODIFIED", timeStamp);
+            dataBundle.put("UID", id);
+            dataBundle.put("BLDG", Double.parseDouble(bgData));
+            dataBundle.put("NOTES", notes);
+            dataBundle.put("LAST_MODIFIED", timeStamp);
 
-        resCode = (int) dbHelper.insert(dataBundle, "bgc");
-        Handler handlerTimer = new Handler();
-        handlerTimer.postDelayed(new Runnable(){
-            public void run() {
+            resCode = (int) dbHelper.insert(dataBundle, "bgc");
+            Handler handlerTimer = new Handler();
+            handlerTimer.postDelayed(new Runnable(){
+                public void run() {
 
-                if(resCode != -1){
+                    if(resCode != -1){
 
-                    btnBGSave.setProgress(100);
-                    Intent intent = new Intent();
-                    intent.putExtra("id", id);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }else{
-                    btnBGSave.setProgress(-1);
-                }
+                        btnBGSave.setProgress(100);
+                        Intent intent = new Intent();
+                        intent.putExtra("id", id);
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }else{
+                        btnBGSave.setProgress(-1);
+                    }
 
 
-            }}, 750);
+                }}, 750);
 
     }
 
@@ -186,35 +190,37 @@ public class VitalDetails extends AppCompatActivity implements View.OnClickListe
 
     private void storeBPData(String sys, String dias, String hRate, String notes) {
 
-        dataBundle = new ContentValues();
-        String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date());
+            dataBundle = new ContentValues();
+            String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date());
 
 
-        dataBundle.put("UID", id);
-        dataBundle.put("SYSTOLIC", Double.parseDouble(sys));
-        dataBundle.put("DIASTOLIC", Double.parseDouble(dias));
-        dataBundle.put("HEART_BEAT", Double.parseDouble(hRate));
-        dataBundle.put("NOTES", notes);
-        dataBundle.put("LAST_MODIFIED", timeStamp);
+            dataBundle.put("UID", id);
+            dataBundle.put("SYSTOLIC", Double.parseDouble(sys));
+            dataBundle.put("DIASTOLIC", Double.parseDouble(dias));
+            dataBundle.put("HEART_BEAT", Double.parseDouble(hRate));
+            dataBundle.put("NOTES", notes);
+            dataBundle.put("LAST_MODIFIED", timeStamp);
 
-        resCode = (int) dbHelper.insert(dataBundle, "bp");
-        Handler handlerTimer = new Handler();
-        handlerTimer.postDelayed(new Runnable(){
-            public void run() {
+            resCode = (int) dbHelper.insert(dataBundle, "bp");
+            Handler handlerTimer = new Handler();
+            handlerTimer.postDelayed(new Runnable(){
+                public void run() {
 
-                if(resCode != -1){
+                    if(resCode != -1){
 
-                    btnBPSave.setProgress(100);
-                    Intent intent = new Intent();
-                    intent.putExtra("id", id);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }else{
-                    btnBPSave.setProgress(-1);
-                }
+                        btnBPSave.setProgress(100);
+                        Intent intent = new Intent();
+                        intent.putExtra("id", id);
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }else{
+                        btnBPSave.setProgress(-1);
+                    }
 
 
-            }}, 750);
+                }}, 750);
+
+
 
     }
 

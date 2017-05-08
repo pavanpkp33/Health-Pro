@@ -45,6 +45,10 @@ public class DataHelper {
         return db.rawQuery(Query, params);
     }
 
+    public void execSQL(String Query) throws Exception{
+        db.execSQL(Query);
+    }
+
 
     private static class DBManager extends SQLiteOpenHelper{
 

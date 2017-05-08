@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -62,6 +63,7 @@ public class BP extends AppCompatActivity implements AdapterView.OnItemClickList
                 Intent intent = new Intent(BP.this, VitalDetails.class);
                 intent.putExtra("id", id);
                 intent.putExtra("tag", "BP");
+                intent.putExtra("action", "add");
                 startActivityForResult(intent, 3);
             }
         });
@@ -91,6 +93,13 @@ public class BP extends AppCompatActivity implements AdapterView.OnItemClickList
             id = data.getIntExtra("id",0);
             //reload list
             getListData();
+        }else{
+            if(resultCode == RESULT_CANCELED){
+                Toast.makeText(this, "Record has been deleted", Toast.LENGTH_SHORT).show();
+            }
+            id = data.getIntExtra("id",0);
+            //reload list
+            getListData();
         }
     }
 
@@ -99,11 +108,18 @@ public class BP extends AppCompatActivity implements AdapterView.OnItemClickList
         Intent intent = new Intent();
         intent.putExtra("id", id);
         setResult(RESULT_OK, intent);
+
         super.onBackPressed();
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Intent detailsIntent = new Intent(this, VitalRecordDetails.class);
+        detailsIntent.putExtra("record", vitalList.get(position));
+        detailsIntent.putExtra("tag", "BP");
+        detailsIntent.putExtra("header", "Blood Pressure details");
+        startActivityForResult(detailsIntent, 11);
 
     }
 
@@ -120,6 +136,9 @@ public class BP extends AppCompatActivity implements AdapterView.OnItemClickList
                 infoObj.setVitalHeader("Blood Pressure");
                 infoObj.setId(dbCursor.getInt(0));
                 infoObj.setUid(dbCursor.getInt(1));
+                infoObj.setSystolic(dbCursor.getString(2));
+                infoObj.setDiastolic(dbCursor.getString(3));
+                infoObj.setBpm(dbCursor.getString(4));
                 String BP = dbCursor.getString(2)+"/"+dbCursor.getString(3)+" "+dbCursor.getString(4);
                 infoObj.setVitalValue(BP);
                 infoObj.setNotes(dbCursor.getString(5));

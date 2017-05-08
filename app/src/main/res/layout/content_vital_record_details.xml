@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_vital_record_details"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="prohealth.cs646.edu.sdsu.cs.prohealth.activities.VitalRecordDetails"
+    tools:showIn="@layout/activity_vital_record_details">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/bmi_lin_layout"
+        android:background="@color/cardview_light_background"
+        android:elevation="5dp"
+        android:visibility="gone">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/design_bmi_layout"
+            android:background="@color/colorAccent"
+            android:layout_height="3dp"></LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/bmi_icon_holder"
+            android:layout_height="80dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bmi"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="0dp" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_gray"
+            />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:weightSum="2">
+            <LinearLayout android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp"
+                    android:text="@string/height_meters" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp"
+                    android:id="@+id/tvBMIVitalHeight"
+                    android:textColor="@android:color/background_dark" />
+            </LinearLayout>
+
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/weight_lbs" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="18sp"
+                        android:id="@+id/tvBMIVitalWeight"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+            </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dark_gray"
+                />
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:weightSum="2">
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/bmi" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="18sp"
+                        android:id="@+id/tvBMIVitalBMI"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/added_on" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="18sp"
+                        android:id="@+id/tvBMIVitalAdded"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+            </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dark_gray"
+                />
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:weightSum="1">
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/notes" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="14sp"
+                        android:id="@+id/tvBMIVitalNotes"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+
+            </TableRow>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:clickable="true"
+                android:id="@+id/btnBMIVitalDelete"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="@string/delete_record"
+                android:textColor="@android:color/background_light"
+                android:textAllCaps="false"
+                android:focusableInTouchMode="false"
+                android:backgroundTint="@android:color/holo_red_light" />
+        </TableLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/bgc_lin_layout"
+        android:background="@color/cardview_light_background"
+        android:elevation="5dp"
+        android:visibility="gone">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/design_bgc_layout"
+            android:background="@color/colorSecAccent"
+            android:layout_height="3dp"></LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/bgc_icon_holder"
+            android:layout_height="80dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_blood_glucose"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="0dp" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_gray"
+            />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:weightSum="2">
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/glucose_level_mmol_l" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="18sp"
+                        android:id="@+id/tvBGCVitalValue"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/added_on" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="18sp"
+                        android:id="@+id/tvBGCVitalAdded"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+            </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dark_gray"
+                />
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:weightSum="1">
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/notes" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="14sp"
+                        android:id="@+id/tvBGCVitalNotes"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+
+            </TableRow>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:clickable="true"
+                android:id="@+id/btnBGCVitalDelete"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="@string/delete_record"
+                android:textColor="@android:color/background_light"
+                android:textAllCaps="false"
+                android:focusableInTouchMode="false"
+                android:backgroundTint="@android:color/holo_red_light" />
+        </TableLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/bp_lin_layout"
+        android:background="@color/cardview_light_background"
+        android:elevation="5dp"
+        android:visibility="gone">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/design_bp_layout"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="3dp"></LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/bp_icon_holder"
+            android:layout_height="80dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_heart_pulse"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="0dp" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_gray"
+            />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:weightSum="2">
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/height_meters" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="18sp"
+                        android:id="@+id/tvBPVitalSystolic"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/weight_lbs" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="18sp"
+                        android:id="@+id/tvBPVitalDiastolic"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+            </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dark_gray"
+                />
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:weightSum="2">
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/bmi" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="18sp"
+                        android:id="@+id/tvBPVitalBpm"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/added_on" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textAlignment="textStart"
+                        android:textSize="18sp"
+                        android:id="@+id/tvBPVitalAdded"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+            </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dark_gray"
+                />
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:weightSum="1">
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="12sp"
+                        android:text="@string/notes" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="14sp"
+                        android:id="@+id/tvBPVitalNotes"
+                        android:textColor="@android:color/background_dark" />
+                </LinearLayout>
+
+
+            </TableRow>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:clickable="true"
+                android:id="@+id/btnBPVitalDelete"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="@string/delete_record"
+                android:textColor="@android:color/background_light"
+                android:textAllCaps="false"
+                android:focusableInTouchMode="false"
+                android:backgroundTint="@android:color/holo_red_light" />
+        </TableLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

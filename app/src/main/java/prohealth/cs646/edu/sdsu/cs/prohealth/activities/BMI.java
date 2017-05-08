@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -63,6 +64,7 @@ public class BMI extends AppCompatActivity implements AdapterView.OnItemClickLis
                 Intent intent = new Intent(BMI.this, VitalDetails.class);
                 intent.putExtra("id", id);
                 intent.putExtra("tag", "BMI");
+                intent.putExtra("action", "add");
                 startActivityForResult(intent, 1);
             }
         });
@@ -93,6 +95,13 @@ public class BMI extends AppCompatActivity implements AdapterView.OnItemClickLis
             id = data.getIntExtra("id",0);
             //reload list
             getListData();
+        }else{
+            if(resultCode == RESULT_CANCELED){
+                Toast.makeText(this, "Record has been deleted", Toast.LENGTH_SHORT).show();
+            }
+            id = data.getIntExtra("id",0);
+            //reload list
+            getListData();
         }
     }
 
@@ -106,6 +115,14 @@ public class BMI extends AppCompatActivity implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Intent detailsIntent = new Intent(this, VitalRecordDetails.class);
+        detailsIntent.putExtra("record", vitalList.get(position));
+        detailsIntent.putExtra("tag", "BMI");
+        detailsIntent.putExtra("header", "BMI details");
+        startActivityForResult(detailsIntent, 11);
+
+
 
     }
 
@@ -122,6 +139,8 @@ public class BMI extends AppCompatActivity implements AdapterView.OnItemClickLis
                 infoObj.setVitalHeader("Body mass index");
                 infoObj.setId(dbCursor.getInt(0));
                 infoObj.setUid(dbCursor.getInt(1));
+                infoObj.setHeight(dbCursor.getString(2));
+                infoObj.setWeight((dbCursor.getString(3)));
                 infoObj.setVitalValue(dbCursor.getString(4));
                 infoObj.setNotes(dbCursor.getString(5));
                 infoObj.setVitalLastUpdated(dbCursor.getString(6));

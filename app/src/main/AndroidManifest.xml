@@ -43,6 +43,10 @@
         <activity
             android:name=".activities.BP"
             android:label="@string/title_activity_bp"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.VitalRecordDetails"
+            android:label="@string/title_activity_vital_record_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
