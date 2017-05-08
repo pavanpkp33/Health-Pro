@@ -46,8 +46,8 @@ public class UserHome extends AppCompatActivity  implements OnBoomListener, View
 
         }
         dbHelper = new DataHelper(this);
-        String [] buttonNames = {"Medications", "Diseases", "Medical Visit", "Vaccinations", "Other", "Profile"};
-        int [] resources = {R.drawable.pill, R.drawable.ic_disease, R.drawable.ic_doctor, R.drawable.ic_syringe, R.drawable.ic_bulb, R.drawable.ic_profile };
+        String [] buttonNames = {"Medications", "Diseases", "Medical Visit", "Vaccinations", "Profile"};
+        int [] resources = {R.drawable.pill, R.drawable.ic_disease, R.drawable.ic_doctor, R.drawable.ic_syringe, R.drawable.ic_profile };
         setContentView(R.layout.activity_user_home);
         Toolbar tbUser = (Toolbar) findViewById(R.id.tbUserHome);
         this.setSupportActionBar(tbUser);
@@ -178,7 +178,11 @@ public class UserHome extends AppCompatActivity  implements OnBoomListener, View
     @Override
     public void onClicked(int index, BoomButton boomButton) {
 
-        System.out.println(boomButton.getTextView().getText());
+        if(index == 4){
+            Intent intent = new Intent(this, Profile.class);
+            intent.putExtra("id", userId);
+            startActivity(intent);
+        }
     }
 
     @Override

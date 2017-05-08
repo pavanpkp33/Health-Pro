@@ -9,7 +9,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -19,9 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.PinActivity"
-            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".activities.SignUp"
             android:label="@string/title_activity_scrolling"
@@ -47,7 +43,9 @@
         <activity
             android:name=".activities.VitalRecordDetails"
             android:label="@string/title_activity_vital_record_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.Profile"
+            android:label="Profile"></activity>
     </application>
 
 </manifest>
