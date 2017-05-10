@@ -46,8 +46,8 @@ public class UserHome extends AppCompatActivity  implements OnBoomListener, View
 
         }
         dbHelper = new DataHelper(this);
-        String [] buttonNames = {"Medications", "Diseases", "Medical Visit", "Vaccinations", "Profile"};
-        int [] resources = {R.drawable.pill, R.drawable.ic_disease, R.drawable.ic_doctor, R.drawable.ic_syringe, R.drawable.ic_profile };
+        String [] buttonNames = {"Ailment", "Medical Visit", "Vaccinations", "Profile"};
+        int [] resources = { R.drawable.ic_disease, R.drawable.ic_doctor, R.drawable.ic_syringe, R.drawable.ic_profile };
         setContentView(R.layout.activity_user_home);
         Toolbar tbUser = (Toolbar) findViewById(R.id.tbUserHome);
         this.setSupportActionBar(tbUser);
@@ -152,36 +152,32 @@ public class UserHome extends AppCompatActivity  implements OnBoomListener, View
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.user_home, menu);
 
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // action with ID action_refresh was selected
-            case R.id.action_settings:
-                Toast.makeText(this, "Skip selected", Toast.LENGTH_SHORT)
-                        .show();
-                break;
-            default:
-                break;
-        }
-
-        return true;
-    }
 
     @Override
     public void onClicked(int index, BoomButton boomButton) {
+        switch (index){
 
-        if(index == 4){
-            Intent intent = new Intent(this, Profile.class);
-            intent.putExtra("id", userId);
-            startActivity(intent);
+            case 0: Intent ailIntent = new Intent(this, AilmentList.class);
+                ailIntent.putExtra("id", userId);
+                startActivity(ailIntent); break;
+
+            case 1: Intent medIntent = new Intent(this, MedicalVisitList.class);
+                    medIntent.putExtra("id", userId);
+                    startActivity(medIntent); break;
+
+            case 2:  Intent vacIntent = new Intent(this, VaccinationList.class);
+                        vacIntent.putExtra("id", userId);
+                        startActivity(vacIntent); break;
+
+            case 3: Intent intent = new Intent(this, Profile.class);
+                intent.putExtra("id", userId);
+                startActivity(intent); break;
+
+
+        }
+        if(index == 3){
+
         }
     }
 

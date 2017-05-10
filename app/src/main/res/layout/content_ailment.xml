@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:id="@+id/ailmentParent"
+        android:background="@android:color/background_light"
+        android:layout_margin="10dp"
+        android:padding="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+
+            android:weightSum="2" >
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_disease_blue"
+                android:layout_gravity="center_horizontal"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/dark_gray"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:maxLines="1"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+                app:met_clearButton="true"
+                android:layout_weight="1"
+                android:inputType="textCapWords"
+                android:id="@+id/etAilmentName"
+                android:ellipsize="end"
+                android:hint="@string/ailment" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:minLines="2"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+                app:met_clearButton="true"
+                android:layout_weight="1"
+
+                android:id="@+id/etAilmentMedication"
+                android:inputType="textCapWords|textMultiLine"
+                android:ellipsize="end"
+                android:hint="@string/medication" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:maxLines="1"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+                app:met_clearButton="true"
+                android:layout_weight="1"
+                android:id="@+id/etDateEncountered"
+                android:focusable="false"
+                android:inputType="datetime"
+                android:ellipsize="end"
+                android:hint="@string/first_encountered_date" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minLines="2"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+                app:met_clearButton="true"
+                android:hint="@string/notes"
+                android:layout_weight="1"
+                android:inputType="textCapWords|textMultiLine"
+                android:id="@+id/etAilmentNotes"
+                />
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/dark_gray"
+            />
+
+        <com.dd.processbutton.iml.ActionProcessButton
+            android:text="@string/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAilmentSave"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/background_light"
+            android:textAllCaps="false"
+            app:pb_colorComplete="@color/green_complete"
+            app:pb_colorNormal="@color/colorAccent"
+            app:pb_colorPressed="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            app:pb_colorProgress="@color/purple_progress"
+            app:pb_textComplete="Success"
+            app:pb_textProgress="Adding Record"
+            app:pb_textError="Error"
+            app:pb_colorError="@color/red_error"
+            android:layout_marginBottom="50dp" />
+    </LinearLayout>
+</ScrollView>

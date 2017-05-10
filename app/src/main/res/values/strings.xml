@@ -49,4 +49,22 @@
     <string name="delete_record">Delete Record</string>
     <string name="glucose_level_mmol_l">Glucose level (mmol/L)</string>
     <string name="delete_account">Delete Account</string>
+    <string name="title_activity_medical_visit_list">MedicalVisitList</string>
+    <string name="medical_visit">Medical Visit</string>
+    <string name="title_activity_vaccination_list">VaccinationList</string>
+    <string name="vaccination_record">Vaccination Record</string>
+    <string name="title_activity_ailment_list">AilmentList</string>
+    <string name="doctor_s_fname">Doctor\'s Fname</string>
+    <string name="doctor_s_lname">Doctor\'s Lname</string>
+    <string name="department_ent">Department (ENT)</string>
+    <string name="date_of_visit">Date of visit</string>
+    <string name="purpose_of_visit_ailment">Purpose of visit (Ailment)</string>
+    <string name="doctor_s_diagnosis">Doctor\'s diagnosis</string>
+    <string name="medications">Medications</string>
+    <string name="vaccination_name">Vaccination Name</string>
+    <string name="date_administered">Date Administered</string>
+    <string name="ailment">Ailment</string>
+    <string name="medication">Medication</string>
+    <string name="first_encountered_date">First encountered date</string>
+    <string name="ailment_details">Ailment Details</string>
 </resources>

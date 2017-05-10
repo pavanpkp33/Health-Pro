@@ -16,21 +16,29 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dd.processbutton.iml.ActionProcessButton;
+import com.rengwuxian.materialedittext.MaterialEditText;
+
 import prohealth.cs646.edu.sdsu.cs.prohealth.R;
 import prohealth.cs646.edu.sdsu.cs.prohealth.helpers.DataHelper;
+import prohealth.cs646.edu.sdsu.cs.prohealth.model.Ailment;
+import prohealth.cs646.edu.sdsu.cs.prohealth.model.MedicalVisit;
+import prohealth.cs646.edu.sdsu.cs.prohealth.model.Vaccination;
 import prohealth.cs646.edu.sdsu.cs.prohealth.model.VitalInformation;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class VitalRecordDetails extends AppCompatActivity implements View.OnClickListener {
+public class RecordDetails extends AppCompatActivity implements View.OnClickListener {
 
-    String tag, header;
-    Button btnBMIdelete, btnBPdelete, btnBGCdelete;
-    VitalInformation vitalInfo;
+    String tag;
+    Button btnVacDelete, btnMedDelete, btnAilDelete;
+    int id = 0;
     DataHelper dbHelper;
-    LinearLayout bmiLin, bpLin, bgcLin;
-    TextView tvBMIHeight, tvBMIWeight, tvBMIValue, tvBMINotes, tvBMILastUpdated
-            , tvBGCValue, tvBGVLastUpdated, tvBGCNotes, tvBPSys, tvBPDias, tvBPbpm, tvBPLastIpdated
-            , tvBPNotes;
+    Vaccination vacInfo;
+    MedicalVisit medInfo;
+    Ailment ailInfo;
+    MaterialEditText etMedicalFname, etMedicalLName, etMedicalDov, etMedicalDept, etMedicalPurpose, etMedicalDrDiag,
+            etMedicalDrMedicines, etMedicalDrNotes, etVaccinationName, etVacDateAdministered, etVacNotes,
+            etAilmentName, etAilmentMed, etAilmentFirstSeen, etAilmentNotes;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -42,110 +50,97 @@ public class VitalRecordDetails extends AppCompatActivity implements View.OnClic
         dbHelper = new DataHelper(this);
         Bundle bdl = getIntent().getExtras();
         tag = bdl.getString("tag");
-        header = bdl.getString("header");
-        vitalInfo = (VitalInformation) bdl.getSerializable("record");
-        setContentView(R.layout.activity_vital_record_details);
-        bmiLin = (LinearLayout) findViewById(R.id.bmi_lin_layout);
-        bpLin = (LinearLayout) findViewById(R.id.bp_lin_layout);
-        bgcLin = (LinearLayout) findViewById(R.id.bgc_lin_layout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.vitalRowDetailsToolbar);
-        setSupportActionBar(toolbar);
-        if(tag.equalsIgnoreCase("BMI")){
-            bmiLin.setVisibility(View.VISIBLE);
-            initBMIElements();
+        if(tag.equalsIgnoreCase("VAC")){
+            setContentView(R.layout.details_vaccination);
+            vacInfo = (Vaccination) bdl.getSerializable("record");
+            initVACElements();
 
-        }else if(tag.equalsIgnoreCase("BGC")){
-            bgcLin.setVisibility(View.VISIBLE);
-            initBGCElements();
+        }else if(tag.equalsIgnoreCase("MED")){
+            setContentView(R.layout.details_medical);
+            medInfo = (MedicalVisit) bdl.getSerializable("record");
+            initMEDElements();
         }else{
-            bpLin.setVisibility(View.VISIBLE);
-            initBPElements();
+            setContentView(R.layout.details_ailment);
+            ailInfo = (Ailment) bdl.getSerializable("record");
+            initAILElements();
         }
-        getSupportActionBar().setTitle(header);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
 
 
     }
 
-    private void initBPElements() {
-        tvBPSys = (TextView) findViewById(R.id.tvBPVitalSystolic);
-        tvBPDias = (TextView) findViewById(R.id.tvBPVitalDiastolic);
-        tvBPbpm = (TextView) findViewById(R.id.tvBPVitalBpm);
-        tvBPLastIpdated = (TextView) findViewById(R.id.tvBPVitalAdded);
-        tvBPNotes = (TextView)findViewById(R.id.tvBPVitalNotes);
+    private void initAILElements() {
+        id = medInfo.getUid();
+        etAilmentName = (MaterialEditText) findViewById(R.id.disAilmentName);
+        etAilmentMed = (MaterialEditText) findViewById(R.id.disAilmentMedication);
+        etAilmentFirstSeen = (MaterialEditText) findViewById(R.id.disDateEncountered);
+        etAilmentNotes = (MaterialEditText) findViewById(R.id.disAilmentNotes);
+        btnAilDelete = (Button) findViewById(R.id.btnDisDelAilment);
+        btnAilDelete.setOnClickListener(this);
 
-        btnBPdelete = (Button) findViewById(R.id.btnBPVitalDelete);
-        btnBPdelete.setOnClickListener(this);
+        etAilmentName.setText(ailInfo.getAilment());
+        etAilmentMed.setText(ailInfo.getMedication());
+        etAilmentFirstSeen.setText(ailInfo.getEncounteredDate());
+        etAilmentNotes.setText(ailInfo.getNotes());
 
-        tvBPSys.setText(vitalInfo.getSystolic());
-        tvBPDias.setText(vitalInfo.getDiastolic());
-        tvBPbpm.setText(vitalInfo.getBpm());
-        tvBPNotes.setText(vitalInfo.getNotes());
-        tvBPLastIpdated.setText(vitalInfo.getVitalLastUpdated());
     }
 
-    private void initBGCElements() {
-        tvBGCValue = (TextView) findViewById(R.id.tvBGCVitalValue);
-        tvBGVLastUpdated = (TextView) findViewById(R.id.tvBGCVitalAdded);
-        tvBGCNotes = (TextView) findViewById(R.id.tvBGCVitalNotes);
-        btnBGCdelete = (Button) findViewById(R.id.btnBGCVitalDelete);
-        btnBGCdelete.setOnClickListener(this);
+    private void initMEDElements() {
+        id = medInfo.getUid();
+        etMedicalFname = (MaterialEditText) findViewById(R.id.disDrFirstName);
+        etMedicalLName = (MaterialEditText) findViewById(R.id.disDrLastName);
+        etMedicalDov = (MaterialEditText) findViewById(R.id.disDateOfVisit);
+        etMedicalDept = (MaterialEditText) findViewById(R.id.disDepartment);
+        etMedicalPurpose = (MaterialEditText) findViewById(R.id.disPurposeOfVisit);
+        etMedicalDrDiag = (MaterialEditText) findViewById(R.id.disDoctorDiagnosis);
+        etMedicalDrMedicines = (MaterialEditText) findViewById(R.id.disMedications);
+        etMedicalDrNotes = (MaterialEditText) findViewById(R.id.disMedicalNotes);
+        btnMedDelete = (Button) findViewById(R.id.btnDisDelMedical);
 
-        tvBGCValue.setText(vitalInfo.getVitalValue());
-        tvBGVLastUpdated.setText(vitalInfo.getVitalLastUpdated());
-        tvBGCNotes.setText(vitalInfo.getNotes());
+        btnMedDelete.setOnClickListener(this);
+
+        etMedicalFname.setText(medInfo.getDrFirstName());
+        etMedicalLName.setText(medInfo.getDrLastName());
+        etMedicalDov.setText(medInfo.getDateOfVisit());
+        etMedicalDept.setText(medInfo.getDepartment());
+        etMedicalPurpose.setText(medInfo.getPurposeOfVisit());
+        etMedicalDrDiag.setText(medInfo.getDiagnosis());
+        etMedicalDrMedicines.setText(medInfo.getMedications());
+        etMedicalDrNotes.setText(medInfo.getNotes());
     }
 
-    private void initBMIElements() {
-        tvBMIHeight = (TextView) findViewById(R.id.tvBMIVitalHeight);
-        tvBMIWeight = (TextView) findViewById(R.id.tvBMIVitalWeight);
-        tvBMILastUpdated = (TextView) findViewById(R.id.tvBMIVitalAdded);
-        tvBMIValue = (TextView) findViewById(R.id.tvBMIVitalBMI);
-        tvBMINotes = (TextView) findViewById(R.id.tvBMIVitalNotes);
-        btnBMIdelete = (Button) findViewById(R.id.btnBMIVitalDelete);
-        btnBMIdelete.setOnClickListener(this);
+    private void initVACElements() {
+        id = vacInfo.getUid();
+        etVaccinationName = (MaterialEditText) findViewById(R.id.disVaccinationName);
+        etVacDateAdministered = (MaterialEditText) findViewById(R.id.disDateAdministered);
+        etVacNotes = (MaterialEditText) findViewById(R.id.disVaccinationNotes);
 
-        tvBMIHeight.setText(vitalInfo.getHeight());
-        tvBMIWeight.setText(vitalInfo.getWeight());
-        tvBMIValue.setText(vitalInfo.getVitalValue());
-        tvBMILastUpdated.setText(vitalInfo.getVitalLastUpdated());
-        tvBMINotes.setText(vitalInfo.getNotes());
+        btnVacDelete = (Button) findViewById(R.id.btnDisDelVaccination);
+        btnVacDelete.setOnClickListener(this);
+        etVaccinationName.setText(vacInfo.getVaccination());
+        etVacDateAdministered.setText(vacInfo.getAdministeredDate());
+        etVacNotes.setText(vacInfo.getNotes());
+
     }
 
 
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.putExtra("id", vitalInfo.getUid());
+        intent.putExtra("id", id);
         setResult(RESULT_OK, intent);
 
         super.onBackPressed();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                Intent intent = new Intent();
-                intent.putExtra("id", vitalInfo.getUid());
-                setResult(RESULT_OK, intent);
-                finish();
-                return true;
 
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onClick(View v) {
 
         switch (v.getId()){
 
-            case R.id.btnBMIVitalDelete:
+            case R.id.btnDisDelVaccination:
                 new AlertDialog.Builder(this)
                         .setTitle("Confirmation")
                         .setMessage("Do you really want to delete this record?")
@@ -154,11 +149,11 @@ public class VitalRecordDetails extends AppCompatActivity implements View.OnClic
 
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 //delete record
-                                String query = "DELETE FROM bmi WHERE ID="+vitalInfo.getId();
+                                String query = "DELETE FROM VAC WHERE ID="+vacInfo.getId();
                                 try {
                                     dbHelper.execSQL(query);
                                     Intent intent = new Intent();
-                                    intent.putExtra("id", vitalInfo.getUid());
+                                    intent.putExtra("id", vacInfo.getUid());
                                     setResult(RESULT_CANCELED, intent);
                                     finish();
                                 } catch (Exception e) {
@@ -168,7 +163,7 @@ public class VitalRecordDetails extends AppCompatActivity implements View.OnClic
                         .setNegativeButton(android.R.string.no, null).show();
                 break;
 
-            case R.id.btnBGCVitalDelete:
+            case R.id.btnDisDelMedical:
                 new AlertDialog.Builder(this)
                         .setTitle("Confirmation")
                         .setMessage("Do you really want to delete this record?")
@@ -177,11 +172,11 @@ public class VitalRecordDetails extends AppCompatActivity implements View.OnClic
 
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 //delete record
-                                String query = "DELETE FROM bgc WHERE ID="+vitalInfo.getId();
+                                String query = "DELETE FROM VISIT WHERE ID="+medInfo.getId();
                                 try {
                                     dbHelper.execSQL(query);
                                     Intent intent = new Intent();
-                                    intent.putExtra("id", vitalInfo.getUid());
+                                    intent.putExtra("id", medInfo.getUid());
                                     setResult(RESULT_CANCELED, intent);
                                     finish();
                                 } catch (Exception e) {
@@ -191,7 +186,7 @@ public class VitalRecordDetails extends AppCompatActivity implements View.OnClic
                         .setNegativeButton(android.R.string.no, null).show();
                 break;
 
-            case R.id.btnBPVitalDelete:
+            case R.id.btnDisDelAilment:
                 new AlertDialog.Builder(this)
                         .setTitle("Confirmation")
                         .setMessage("Do you really want to delete this record?")
@@ -200,11 +195,11 @@ public class VitalRecordDetails extends AppCompatActivity implements View.OnClic
 
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 //delete record
-                                String query = "DELETE FROM bp WHERE ID="+vitalInfo.getId();
+                                String query = "DELETE FROM AIL WHERE ID="+ailInfo.getId();
                                 try {
                                     dbHelper.execSQL(query);
                                     Intent intent = new Intent();
-                                    intent.putExtra("id", vitalInfo.getUid());
+                                    intent.putExtra("id", ailInfo.getUid());
                                     setResult(RESULT_CANCELED, intent);
                                     finish();
                                 } catch (Exception e) {

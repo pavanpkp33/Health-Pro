@@ -330,8 +330,8 @@
             android:layout_height="wrap_content"
             app:bmb_normalColor="@color/colorPrimaryDark"
             app:bmb_buttonEnum="textOutsideCircle"
-            app:bmb_piecePlaceEnum="piecePlace_dot_5_1"
-            app:bmb_buttonPlaceEnum="buttonPlace_sc_5_3"
+            app:bmb_piecePlaceEnum="piecePlace_dot_4_1"
+            app:bmb_buttonPlaceEnum="buttonPlace_sc_4_2"
             android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap" />
     </RelativeLayout>

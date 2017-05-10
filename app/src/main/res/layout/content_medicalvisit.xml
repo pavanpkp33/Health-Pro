@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    android:id="@+id/medicalParent"
+    android:background="@android:color/background_light"
+    android:layout_margin="10dp"
+    android:padding="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:id="@+id/LinMedicalHeaderView"
+        android:weightSum="2" >
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_doctor_blue"
+        android:layout_gravity="center_horizontal"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/dark_gray"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/mvisitLinDrNames"
+        android:weightSum="2" >
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:layout_weight="1"
+            android:inputType="textCapWords"
+            android:id="@+id/etDrFirstName"
+            android:ellipsize="end"
+            android:hint="@string/doctor_s_fname" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:layout_weight="1"
+            android:inputType="textCapWords"
+            android:id="@+id/etDrLastName"
+            android:ellipsize="end"
+             android:hint="@string/doctor_s_lname" />
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:layout_weight="1"
+            android:inputType="textCapWords"
+            android:id="@+id/etDepartment"
+            android:ellipsize="end"
+            android:hint="@string/department_ent" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:layout_weight="1"
+            android:id="@+id/etDateOfVisit"
+            android:focusable="false"
+            android:inputType="datetime"
+            android:ellipsize="end"
+            android:hint="@string/date_of_visit" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+         >
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minLines="2"
+            app:met_floatingLabel="highlight"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:hint="@string/purpose_of_visit_ailment"
+            android:layout_weight="1"
+            android:inputType="textCapWords|textMultiLine"
+            android:id="@+id/etPurposeOfVisit"
+             />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minLines="2"
+            app:met_floatingLabel="highlight"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:hint="@string/doctor_s_diagnosis"
+            android:layout_weight="1"
+            android:inputType="textCapWords|textMultiLine"
+            android:id="@+id/etDoctorDiagnosis"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minLines="2"
+            app:met_floatingLabel="highlight"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:hint="@string/medications"
+            android:layout_weight="1"
+            android:inputType="textCapWords|textMultiLine"
+            android:id="@+id/etMedications"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minLines="2"
+            app:met_floatingLabel="highlight"
+            app:met_iconPadding="0dp"
+            app:met_clearButton="true"
+            android:hint="@string/notes"
+            android:layout_weight="1"
+            android:inputType="textCapWords|textMultiLine"
+            android:id="@+id/etMedicalNotes"
+            />
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/dark_gray"
+        />
+
+    <com.dd.processbutton.iml.ActionProcessButton
+        android:text="@string/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnMedicalVisitSave"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/background_light"
+        android:textAllCaps="false"
+        app:pb_colorComplete="@color/green_complete"
+        app:pb_colorNormal="@color/colorAccent"
+        app:pb_colorPressed="@color/colorAccent"
+        android:layout_marginTop="10dp"
+        app:pb_colorProgress="@color/purple_progress"
+        app:pb_textComplete="Success"
+        app:pb_textProgress="Adding Record"
+        app:pb_textError="Error"
+        app:pb_colorError="@color/red_error"
+        android:layout_marginBottom="50dp" />
+</LinearLayout>
+</ScrollView>

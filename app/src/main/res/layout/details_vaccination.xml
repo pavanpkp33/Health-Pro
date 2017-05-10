@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:background="@android:color/background_light"
+        android:layout_margin="10dp"
+        android:padding="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+
+            android:weightSum="2" >
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_syringe_red"
+                android:layout_gravity="center_horizontal"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/dark_gray"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:maxLines="1"
+                android:enabled="false"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+                
+                android:layout_weight="1"
+                android:inputType="textCapWords"
+                android:id="@+id/disVaccinationName"
+                android:ellipsize="end"
+                android:hint="@string/vaccination_name" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:maxLines="1"
+                android:enabled="false"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+
+                android:layout_weight="1"
+                android:id="@+id/disDateAdministered"
+                android:focusable="false"
+                android:inputType="datetime"
+                android:ellipsize="end"
+                android:hint="@string/date_administered" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minLines="2"
+                android:enabled="false"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"
+
+                android:hint="@string/notes"
+                android:layout_weight="1"
+                android:inputType="textCapWords|textMultiLine"
+                android:id="@+id/disVaccinationNotes"
+                />
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/dark_gray"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:clickable="true"
+            android:id="@+id/btnDisDelVaccination"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/delete_record"
+            android:textColor="@android:color/background_light"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
+            android:focusableInTouchMode="false"
+            android:backgroundTint="@android:color/holo_red_light" />
+
+    </LinearLayout>
+</ScrollView>

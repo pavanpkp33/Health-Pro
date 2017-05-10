@@ -44,8 +44,27 @@
             android:name=".activities.VitalRecordDetails"
             android:label="@string/title_activity_vital_record_details"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.Profile"
-            android:label="Profile"></activity>
+        <activity
+            android:name=".activities.Profile"
+            android:label="Profile" />
+        <activity
+            android:name=".activities.MedicalVisitList"
+            android:label="@string/title_activity_medical_visit_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.VaccinationList"
+            android:label="@string/title_activity_vaccination_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AilmentList"
+            android:label="@string/title_activity_ailment_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AddRecords"
+            android:label="Add Record" />
+        <activity android:name=".activities.RecordDetails"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="Record details"></activity>
     </application>
 
 </manifest>
