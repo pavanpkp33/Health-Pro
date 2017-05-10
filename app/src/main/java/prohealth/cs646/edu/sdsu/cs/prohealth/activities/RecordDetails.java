@@ -70,7 +70,7 @@ public class RecordDetails extends AppCompatActivity implements View.OnClickList
     }
 
     private void initAILElements() {
-        id = medInfo.getUid();
+        id = ailInfo.getUid();
         etAilmentName = (MaterialEditText) findViewById(R.id.disAilmentName);
         etAilmentMed = (MaterialEditText) findViewById(R.id.disAilmentMedication);
         etAilmentFirstSeen = (MaterialEditText) findViewById(R.id.disDateEncountered);

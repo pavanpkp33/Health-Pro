@@ -59,15 +59,6 @@
                 android:layout_below="@+id/tvMedicalIcon" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:id="@+id/tvMedicalSpecialization"
-                android:layout_below="@+id/tvMedicalDoctorName"
-                android:layout_alignStart="@+id/tvMedicalDoctorName"
-                android:textSize="12sp" />
-
-            <TextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,6 +77,27 @@
                 android:layout_alignStart="@+id/tvMedicalHeader"
                 android:id="@+id/tvMedicalFirstName"
                 android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:id="@+id/tvMedicalSpecialization"
+                android:textSize="12sp"
+                android:layout_alignBaseline="@+id/textView"
+                android:layout_alignBottom="@+id/textView"
+                android:layout_toEndOf="@+id/textView"
+                android:layout_marginStart="11dp"
+                android:textColor="@android:color/background_dark" />
+
+            <TextView
+                android:text="@string/department"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:textSize="12sp"
+                android:layout_above="@+id/tvMedicalLastUpdated"
+                android:layout_alignStart="@+id/tvMedicalLastUpdated" />
 
 
         </RelativeLayout>

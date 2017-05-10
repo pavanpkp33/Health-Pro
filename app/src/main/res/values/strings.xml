@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProHealth</string>
+    <string name="app_name">Health Pro</string>
 
     <string name="title_activity_pin">Securing your app</string>
     <string name="dummy_button">Dummy Button</string>
@@ -67,4 +67,5 @@
     <string name="medication">Medication</string>
     <string name="first_encountered_date">First encountered date</string>
     <string name="ailment_details">Ailment Details</string>
+    <string name="department">Department:</string>
 </resources>
